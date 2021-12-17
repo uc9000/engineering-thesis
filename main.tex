@@ -1,0 +1,62 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{subcaption}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={160mm,247mm},
+ left=25mm,
+ top=25mm,
+ }
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\usepackage{graphicx}
+\graphicspath{ {./img/} }
+
+\author{
+	{Autor: Jordan Wiszniewski}\\
+	{nr indeksu: 247859}\\
+	{Promotor: Dr inż. Wojciech Myszka}\\
+	{charakter pracy: projektowy}
+}
+\date{Rok akademicki 2021/2022}
+
+\title{
+	{\includegraphics[width = \textwidth]{logo-pwr-wm.png}}
+	{\bigbreak}
+	{Praca dyplomowa inżynierska}\\
+	{\bigbreak}
+	\textbf{Narzędzie do rysowania schematów blokowych}
+}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Wstęp}
+\input{chapters/chapter1}
+
+\chapter{Typy bloczków oraz ich przykładowe zastosowania}
+\input{chapters/chapter2}
+
+\chapter{Opis działania aplikacji}
+\input{chapters/chapter3}
+
+\end{document}

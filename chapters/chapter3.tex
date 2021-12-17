@@ -1,0 +1,147 @@
+	Rozdział poświęcony jest ogólnemu opisowi działania poszczególnych fragmentów aplikacji zarówno od strony jej użytkownika jak i kodu źródłowego.
+
+\section{Interfejs użytkownika}
+	Graficznym interfejsem użytkownika (GUI) jest prosty formularz HTML, domyślnie dostępny w oknie przeglądarki internetowej po uruchomieniu aplikacji pod adresem lokalnego hosta na porcie 8080: 
+	\smallbreak
+	\href{http://localhost:8080/flowchart/}{localhost:8080/flowchart/}.
+	\bigbreak	
+	Domyślnie GUI zawiera w górnej części pole z wygenerowanym diagramem blokowym, a pod nim  menu rozwijane umożliwiające wybór składni kodu zarówno Mermaid jak i C-podobnego (dropdown select menu), pole tekstowe (text area) do wprowadzania samego kodu oraz przycisk potwierdzający przesłanie typu wybranej składni i kodu przez Rest API. Żądanie typu GET obsługiwane przez kontroler Rest dopuszczający dwa opcjonalne parametry: typ składni ( $type$ ) - domyślnie przyjmujący składnie Mermaid, kod umieszczony w polu tekstowym ( $originalCode$ ) - domyślnie rysujący dwa proste bloczki. Jakiekolwiek wyrzucenie wyjątku przez program zostaje obsłużone właśnie w kontrolerze, po czym przekazana zostaje wiadomość w nim zawarta do ekranu błędu.
+
+	
+				\begin{figure}[H]
+  \begin{subfigure}{\textwidth}
+    \includegraphics[width=0.8\textwidth]{GUI.png}
+  \end{subfigure}\hfill
+  \caption{Interfejs graficzny użytkownika wyświetlony przy pomocy przeglądarki Vivaldi 5. }
+\end{figure}
+
+Przykładowy schemat blokowy dostępny pod adresem: 
+	\smallbreak
+	\href{http://localhost:8080/flowchart/?type=C\&originalCode=Start();Proces();End();}{http://localhost:8080/flowchart/?type=C\&originalCode=Start();Proces();End();}
+	\bigbreak
+	
+	Dodatkowym ekranem jest strona HTML, która wyświetla komunikat o błędzie składniowym oraz pokazuje fragment kodu w którym ten błąd nastąpił.
+	
+	\begin{figure}[H]
+  \begin{subfigure}{\textwidth}
+    \includegraphics[width=0.8\textwidth]{error-page.png}
+  \end{subfigure}\hfill
+    \begin{subfigure}[t]{0.44\textwidth}
+    \bigbreak
+    Dla kodu:
+    \begin{minted}[linenos=true]{cpp}
+Start();
+Proces();{
+End();
+    \end{minted}
+  \end{subfigure}%
+  \caption{Przykład ekranu wyświetlającego błąd składniowy}
+\end{figure}
+
+
+\begin{figure}[H]
+	\begin{subfigure}{\textwidth}
+			\begin{minted}[obeytabs=true,linenos,tabsize=1,breaklines,fontsize=\small]{java}
+@GetMapping("/flowchart")
+public ModelAndView flowchart(
+    @RequestParam(value = "type", defaultValue = "mermaid") String type,
+    @RequestParam(value = "originalCode", defaultValue = "A --> B") String code,
+    ModelAndView mv
+    ){
+    try {
+        mv.setViewName("flowchart.html");
+        flowchartParser.setType(type);
+        flowchartParser.code2flowchart(code);
+        mv.addObject("flowchart", flowchartParser);
+        return mv;
+    } catch (Exception e){
+        mv.setViewName("errorpage.html");
+        mv.addObject("message", e.getMessage());
+        return mv;
+    }
+}
+			\end{minted}
+	\end{subfigure}\hfill
+  	\caption{Kontroler Rest obsługujący zapytania metodą GET protokołu HTTP z dwoma parametrami, który przekierowuje na stronę z narysowanym schematem lub ekran błędu }
+\end{figure}
+
+\bigbreak
+	Do lepszego śledzenia przebiegu działania programu i ewentualnych błędów w terminalu, w którym uruchomiona jest aplikacja wyświetlają się szczegółowe logi z każdego etapu działania programu:	
+		
+				\begin{figure}[H]
+  \begin{subfigure}{\textwidth}
+    \includegraphics[width=\textwidth]{terminal-log.png}
+  \end{subfigure}\hfill
+  \caption{Przykładowy zapis w terminalu z przebiegu programu zakończonego błędem. }
+\end{figure}
+	
+
+\section{Lexer i parser kodu języka C-podobnego}
+	W języku Java 11 SE stworzony został:
+	\begin{itemize}
+		\item Lexer kodu zintegrowany jest z parserem i jego podstawowym zadaniem jest rozpoznawanie instrukcji obsługiwanych przez aplikacje za pomocą wyrażeń regularnych oraz zapewnienia zrównoważonego użycia nawiasów zarówno okrągłych jak i klamrowych w odpowiedniej kolejności, zgodnie z zasadami programowania języka C. 
+		\break
+		
+				
+\begin{figure}[H]
+  \begin{subfigure}{\textwidth}
+			\begin{minted}[linenos=true]{java}
+ELSE_PATTERN = "\\}else\\{.*";
+IF_PATTERN = "if\\(.*";
+WHILE_PATTERN = "while\\(.*";
+EXPRESSION_PATTERN = "([\\w\\+\\-=\\(\\)\\.,<>/]+?;).*";
+END_SCOPE_PATTERN = "\\}.*";
+			\end{minted}
+  \end{subfigure}\hfill
+  \caption{Lista rozpoznawalnych przez lexer wyrazów regularnych (REGEX)}
+\end{figure}
+			
+		\item Parser kodu napisany jest w oparciu o recursive descent parser użyty m. in. w kompilatorach języka C takich jak: GCC oraz Clang. Polega on na rekursywnym wywoływaniu funkcji wczytującej kolejne instrukcje rozpoznane przez lexer oraz zależnie od rodzaju tych instrukcji wyciąga treść argumentu (w nawiasach okrągłych) oraz zawartość zakresu wewnętrznego (tzw. scope) instrukcji (w nawiasach klamrowych).		
+						
+\begin{figure}[H]
+  \begin{subfigure}{\textwidth}
+			\begin{minted}[linenos=true]{java}
+
+private void handleIfStatement(){
+    String statement = programBuilder.toString();
+    String condition = getStringInOuterParenthesis(statement);
+    String expressions = getStringInOuterCurly(statement);
+    programBuilder.delete(0, condition.length() + 5);
+    onIfStatementEnter(condition, expressions);
+    parseProgramInstruction();
+}
+			\end{minted}
+  \end{subfigure}\hfill
+  \caption{Przykładowa funkcja, która izoluje z instrukcji $if$ jej argument (condition) oraz zawartość jej obszaru wewnętrznego (expressions), a następnie przekazuje te wartości do tzw. metody obserwowanej (onIfStatementEnter)}
+\end{figure}
+		
+	 Otwarcie nowego zakresu w tym przypadku możliwe jest jedynie w instrukcjach $if - else$ oraz $while$. Aby umożliwić obsługę zagnieżdżeń tych instrukcji, enum reprezentujący jej typ z każdorazowym wejściem w jej zakres wewnętrzny (scope) jest odkładany na stos, a z wyjściem z zakresu zdejmowany z tego stosu co ma na celu późniejsze użycie samoczynnie wywołujących się metod obserwowanych (observable) we wzorcu projektowym $Obserwator$ ($Observer$). W przypadku instrukcji odpowiadającym procesom (dowolny tekst bez znaków specjalnych zakończony średnikiem) metoda obserwująca informuje jedynie o samym jej wywołaniu, natomiast w przypadku instrukcji warunkowych występują metody dedykowane wejściu oraz wyjściu z obszaru tej instrukcji. Domyślna metoda obserwowana jedynie wyświetla w terminalu podstawowe informacje o danej instrukcji, natomiast informacje te mogą być dowolnie wykorzystane wersji tej klasy z nadpisanymi definicjami jej metod obserwowanych. 
+						
+\begin{figure}[H]
+  \begin{subfigure}{\textwidth}
+		\begin{minted}[linenos=true]{java}
+public void onIfStatementEnter(String condition, String expressions){
+	log.info("IF entered : " + condition + " than : " + expressions);
+}
+
+public void onIfStatementExit(){
+	log.info("IF exited");
+}
+
+public void onElseStatementEnter(String expressions){
+	log.info("ELSE entered : " + expressions);
+}
+		\end{minted}
+  \end{subfigure}\hfill
+  \caption{Przykład domyślnych definicji metod obserwowanych dla instrukcji $if/else$}
+\end{figure}
+
+
+\end{itemize}
+
+\section{Akcelerator budowania kodu w języku wymaganym przez Mermaid}
+	Do ułatwienia tworzenia schematów blokowych powstał akcelerator - pakiet, umożliwiający łatwe tworzenie i zarządzanie poszczególnymi elementami schematów blokowych, a następnie konwersja tych elementów w pamięci programu na kod docelowy, wymagany przez Mermaid. Składa się on z listy węzłów (nodes) odpowiadającym poszczególnym bloczkom oraz połączeniom (links) generowanym na podstawie relacji między tymi węzłami.
+
+
+\section{Konwerter kodu języka C-podobnego na język Mermaid}
+	

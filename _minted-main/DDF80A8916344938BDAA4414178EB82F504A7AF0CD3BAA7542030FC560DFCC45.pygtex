@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{start}\PYG{p}{();}
+\PYG{n}{int\PYGZus{}}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k}{while}\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{i}\PYG{o}{++}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{end}\PYG{p}{();}
+\end{Verbatim}

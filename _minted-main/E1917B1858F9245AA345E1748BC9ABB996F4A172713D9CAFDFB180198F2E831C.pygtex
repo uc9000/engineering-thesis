@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{onIfStatementEnter}\PYG{p}{(}\PYG{n}{String} \PYG{n}{condition}\PYG{p}{,} \PYG{n}{String} \PYG{n}{expressions}\PYG{p}{)\PYGZob{}}
+	\PYG{n}{log}\PYG{p}{.}\PYG{n+na}{info}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}IF entered : \PYGZdq{}} \PYG{o}{+} \PYG{n}{condition} \PYG{o}{+} \PYG{l+s}{\PYGZdq{} than : \PYGZdq{}} \PYG{o}{+} \PYG{n}{expressions}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{onIfStatementExit}\PYG{p}{()\PYGZob{}}
+	\PYG{n}{log}\PYG{p}{.}\PYG{n+na}{info}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}IF exited\PYGZdq{}}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kd}{public} \PYG{k+kt}{void} \PYG{n+nf}{onElseStatementEnter}\PYG{p}{(}\PYG{n}{String} \PYG{n}{expressions}\PYG{p}{)\PYGZob{}}
+	\PYG{n}{log}\PYG{p}{.}\PYG{n+na}{info}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}ELSE entered : \PYGZdq{}} \PYG{o}{+} \PYG{n}{expressions}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

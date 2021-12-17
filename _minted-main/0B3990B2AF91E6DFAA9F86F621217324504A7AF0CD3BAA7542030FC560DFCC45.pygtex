@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Start}\PYG{p}{();}
+\PYG{n}{Proces}\PYG{p}{();\PYGZob{}}
+\PYG{n}{End}\PYG{p}{();}
+\end{Verbatim}

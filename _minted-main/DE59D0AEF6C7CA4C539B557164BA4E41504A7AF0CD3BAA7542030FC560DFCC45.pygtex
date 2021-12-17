@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{start}\PYG{p}{();}
+\PYG{n}{x}\PYG{+w}{ }\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{\PYGZus{}}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{;}
+\PYG{n}{proces}\PYG{p}{();}
+\PYG{n}{end}\PYG{p}{();}
+\end{Verbatim}
