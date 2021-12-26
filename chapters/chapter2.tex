@@ -18,18 +18,17 @@ end();
 \end{figure}
 
 \section{Bloczek warunkowy}
-\begin{itemize}
-	\item dla instrukcji $if-else$: {\smallskip}
+	\subsection{dla instrukcji $if-else$}	
 	
 		Aplikacja rozpoznaje składnie instrukcji i z podanego warunku tworzy bloczek decyzyjny. Następnie tworzy dwa rozgałęzienia odpowiadające za akcje (dowolna ilość bloczków procesu) wykonywane w przypadku spełnienia warunku (bezpośrednio pod scope'm intrukcji $if$) lub nie spełnienia (pod scope'm instrukcji $else$, a następnie instrukcje znajujące się poza intrukcją $if$) 
 		
-			\begin{figure}[H]
+\begin{figure}[H]
   \begin{subfigure}[t]{0.49\textwidth}
     \vspace{0pt}
     \includegraphics[height=6cm]{decyzja-if.png}
   \end{subfigure}\hfill
   \begin{subfigure}[t]{0.44\textwidth}
-    \begin{minted}[linenos=true]{cpp}
+    \begin{minted}[xleftmargin=\parindent, linenos=true]{cpp}
 start();
 if(x >= 2){
   x_większe_lub_równe_2;
@@ -43,7 +42,7 @@ end();
   \caption{Bloczek warunkowy utworzony przy użyciu instrukcji $if$}
 \end{figure}
 	
-	\item dla instrukcji $while$: {\smallskip}
+		\subsection{dla instrukcji $while$}	
 	
 		Interpretacja warunku działa analogicznie jak przy instrukcji $if$, podobnie również działa dołączanie kolejnych instrukcji wykonujących się po spełnieniu warunku z tą różnicą, że ostatni proces tej gałęzi łączony jest automatycznie z bloczkiem decyzyjnym instrukcji $while$. Nie spełnienie warunku odpowiada gałęzi na której znajdują się procesy umieszczone poza scope'm  tego typu instrukcji warunkowej.
 	
@@ -64,8 +63,6 @@ end();
   \end{subfigure}%
   \caption{Bloczek warunkowy utworzony przy użyciu instrukcji $while$}
 \end{figure}	
-		
-\end{itemize}
 
 \section{Bardziej złożony przykład}
 Schemat blokowy przedstawiający (uproszczony) algorytm działania aplikacji w której został narysowany: {\smallskip}

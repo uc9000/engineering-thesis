@@ -5,11 +5,12 @@
 	\smallbreak
 	\href{http://localhost:8080/flowchart/}{localhost:8080/flowchart/}.
 	\bigbreak	
-	Domyślnie GUI zawiera w górnej części pole z wygenerowanym diagramem blokowym, a pod nim  menu rozwijane umożliwiające wybór składni kodu zarówno Mermaid jak i C-podobnego (dropdown select menu), pole tekstowe (text area) do wprowadzania samego kodu oraz przycisk potwierdzający przesłanie typu wybranej składni i kodu przez Rest API. Żądanie typu GET obsługiwane przez kontroler Rest dopuszczający dwa opcjonalne parametry: typ składni ( $type$ ) - domyślnie przyjmujący składnie Mermaid, kod umieszczony w polu tekstowym ( $originalCode$ ) - domyślnie rysujący dwa proste bloczki. Jakiekolwiek wyrzucenie wyjątku przez program zostaje obsłużone właśnie w kontrolerze, po czym przekazana zostaje wiadomość w nim zawarta do ekranu błędu.
+	Domyślnie GUI zawiera w górnej części pole z wygenerowanym diagramem blokowym, a pod nim  menu rozwijane umożliwiające wybór składni kodu zarówno Mermaid jak i C-podobnego (dropdown select menu), pole tekstowe (text area) do wprowadzania samego kodu oraz przycisk potwierdzający przesłanie typu wybranej składni i kodu przez Rest API. Żądanie typu GET obsługiwane przez kontroler Rest dopuszczający dwa opcjonalne parametry: typ składni ($type$) - domyślnie przyjmujący składnie Mermaid, kod umieszczony w polu tekstowym ($originalCode$) - domyślnie rysujący dwa proste bloczki. Jakiekolwiek wyrzucenie wyjątku przez program zostaje obsłużone właśnie w kontrolerze, po czym przekazana zostaje wiadomość w nim zawarta do ekranu błędu.
 
 	
 				\begin{figure}[H]
   \begin{subfigure}{\textwidth}
+    \centering
     \includegraphics[width=0.8\textwidth]{GUI.png}
   \end{subfigure}\hfill
   \caption{Interfejs graficzny użytkownika wyświetlony przy pomocy przeglądarki Vivaldi 5. }
@@ -22,14 +23,16 @@ Przykładowy schemat blokowy dostępny pod adresem:
 	
 	Dodatkowym ekranem jest strona HTML, która wyświetla komunikat o błędzie składniowym oraz pokazuje fragment kodu w którym ten błąd nastąpił.
 	
-	\begin{figure}[H]
+\begin{figure}[H]
   \begin{subfigure}{\textwidth}
+  \centering
     \includegraphics[width=0.8\textwidth]{error-page.png}
   \end{subfigure}\hfill
     \begin{subfigure}[t]{0.44\textwidth}
     \bigbreak
     Dla kodu:
-    \begin{minted}[linenos=true]{cpp}
+    \centering
+    \begin{minted}[linenos=true]{cpp}    
 Start();
 Proces();{
 End();
@@ -68,8 +71,9 @@ public ModelAndView flowchart(
 \bigbreak
 	Do lepszego śledzenia przebiegu działania programu i ewentualnych błędów w terminalu, w którym uruchomiona jest aplikacja wyświetlają się szczegółowe logi z każdego etapu działania programu:	
 		
-				\begin{figure}[H]
+\begin{figure}[H]
   \begin{subfigure}{\textwidth}
+  \centering
     \includegraphics[width=\textwidth]{terminal-log.png}
   \end{subfigure}\hfill
   \caption{Przykładowy zapis w terminalu z przebiegu programu zakończonego błędem. }
@@ -77,9 +81,9 @@ public ModelAndView flowchart(
 	
 
 \section{Lexer i parser kodu języka C-podobnego}
-	W języku Java 11 SE stworzony został:
-	\begin{itemize}
-		\item Lexer kodu zintegrowany jest z parserem i jego podstawowym zadaniem jest rozpoznawanie instrukcji obsługiwanych przez aplikacje za pomocą wyrażeń regularnych oraz zapewnienia zrównoważonego użycia nawiasów zarówno okrągłych jak i klamrowych w odpowiedniej kolejności, zgodnie z zasadami programowania języka C. 
+	\subsection{Lexer} 
+	W języku Java 11 SE stworzony został lexer kodu zintegrowany jest z parserem i jego podstawowym zadaniem jest rozpoznawanie instrukcji obsługiwanych przez aplikacje za pomocą wyrażeń regularnych oraz zapewnienia zrównoważonego użycia nawiasów zarówno okrągłych jak i klamrowych w odpowiedniej kolejności, zgodnie z zasadami programowania języka C. 
+
 		\break
 		
 				
@@ -96,7 +100,8 @@ END_SCOPE_PATTERN = "\\}.*";
   \caption{Lista rozpoznawalnych przez lexer wyrazów regularnych (REGEX)}
 \end{figure}
 			
-		\item Parser kodu napisany jest w oparciu o recursive descent parser użyty m. in. w kompilatorach języka C takich jak: GCC oraz Clang. Polega on na rekursywnym wywoływaniu funkcji wczytującej kolejne instrukcje rozpoznane przez lexer oraz zależnie od rodzaju tych instrukcji wyciąga treść argumentu (w nawiasach okrągłych) oraz zawartość zakresu wewnętrznego (tzw. scope) instrukcji (w nawiasach klamrowych).		
+	\subsection{Parser} 		
+	Parser kodu napisany jest w oparciu o recursive descent parser użyty m. in. w kompilatorach języka C takich jak: GCC oraz Clang. Polega on na rekursywnym wywoływaniu funkcji wczytującej kolejne instrukcje rozpoznane przez lexer oraz zależnie od rodzaju tych instrukcji wyciąga treść argumentu (w nawiasach okrągłych) oraz zawartość zakresu wewnętrznego (tzw. scope) instrukcji (w nawiasach klamrowych).		
 						
 \begin{figure}[H]
   \begin{subfigure}{\textwidth}
@@ -137,11 +142,62 @@ public void onElseStatementEnter(String expressions){
 \end{figure}
 
 
-\end{itemize}
 
 \section{Akcelerator budowania kodu w języku wymaganym przez Mermaid}
-	Do ułatwienia tworzenia schematów blokowych powstał akcelerator - pakiet, umożliwiający łatwe tworzenie i zarządzanie poszczególnymi elementami schematów blokowych, a następnie konwersja tych elementów w pamięci programu na kod docelowy, wymagany przez Mermaid. Składa się on z listy węzłów (nodes) odpowiadającym poszczególnym bloczkom oraz połączeniom (links) generowanym na podstawie relacji między tymi węzłami.
 
+\begin{figure}[H]
+  \begin{subfigure}{\textwidth}
+  	\centering
+    \includegraphics[width=\textwidth]{uml-akcelerator.png}
+  \end{subfigure}\hfill
+  \caption{Diagram UML klas z których powstał akcelerator budowania kodu Mermaid }
+\end{figure}
+
+	Do ułatwienia tworzenia schematów blokowych powstał akcelerator - zestaw klas, umożliwiający łatwe tworzenie i zarządzanie poszczególnymi elementami schematów blokowych, a następnie konwersja tych elementów w pamięci programu na kod docelowy, wymagany przez Mermaid. Docelowo składa się on z listy węzłów (nodes) odpowiadającym poszczególnym bloczkom oraz połączeniom (links) generowanym na podstawie relacji między tymi węzłami. 	Za pomocą akcesorów oraz innych publicznych metod wyszczególnionych na powyższym diagramie UML można w łatwy sposób tworzyć nowe węzły, nadawać im ich typ oraz łączyć je ze sobą.
 
 \section{Konwerter kodu języka C-podobnego na język Mermaid}
+
+	Konwerter ten wykorzystuje wcześniej wspomniany wzorzec projektowy Obserwator. W tym przypadku nadpisuje on domyślne definicje wcześniej opisanych metod obserwowanych. Zaraz po wywołaniu takiej nadpisanej metody, zależnie od tego do jakiej akcji została ona przypisana wykonuje określone akcje, również z argumentami przekazanymi przez te metody.
+	
+							
+\begin{figure}[H]
+  \begin{subfigure}{\textwidth}
+		\begin{minted}[linenos=true]{java}
+@Override
+public void onIfStatementEnter(String condition, String expressions){
+    condition = replaceChars(condition);
+    condition = wordWrap(condition, 12);
+    log.info("IF entered : " + condition + " than : " + expressions);
+    manager.setLastNode(fromNode);
+    NodeItem scopeNode = manager
+            .createDecisionNodeLinkedToLast(condition);
+    scopeNodes.push(scopeNode);
+    fromNode = scopeNode.getOutputs().get(0);
+}
+
+@Override
+public void onIfStatementExit(){
+    log.info("IF exited");
+    manager.createSingleNode("#if_merge");
+    manager.linkNodes(scopeNodes.peek().findLastInTree(0), 
+            manager.getLastNode());
+    manager.linkNodes(scopeNodes.peek().findLastInTree(1), 
+            manager.getLastNode());
+    scopeNodes.pop();
+    fromNode = manager.getLastNode();
+}
+
+@Override
+public void onElseStatementEnter(String expressions){
+    log.info("ELSE entered : " + expressions);
+    fromNode = scopeNodes.peek().getOutputs().get(1);
+}
+		\end{minted}
+  \end{subfigure}\hfill
+  \caption{Przykład nadpisanych definicji metod obserwowanych dla instrukcji $if-else$}
+\end{figure}
+
+	Na powyższym przykładzie, po wejściu w instrukcję warunkową $if$ (onIfStatementEnter) warunek zostaje poddany usunięciu wszystkich specjalnych znaków, zastąpieniu znaku "\_" (underscore) przez " " (spacja). Następnie treść tego warunku poddana zostaje zawijaniu tekstu. Później po wstępnie przygotowanej zawartości warunku, z pomocą akceleratora budowania kodu Mermaid utworzony zostaje węzeł odpowiadający za bloczek decyzyjny. W związku z tym, że węzeł ten otwiera nowy obszar wewnętrzny (scope) zostaje on dodany do stosu (scopeNodes) śledzącego, który obszar jest w danym momencie wykonywany. Z bloczka decyzyjnego domyślnie wychodzą dwie gałęzi (jest połączony na wyjściu z dwoma pomocniczymi węzłami, które są niewidoczne), do końca pierwszej z nich (index = 0) przyłączane są kolejno instrukcje zawarte w obszarze wewnętrznym, odczytywane rekurencyjnie zgodnie z działaniem parsera, natomiast do końca drugiej gałęzi (index = 1) zostają przyłączane instrukcje po wywołaniu funkcji odpowiadającej instrukcji $else$. Po przetworzeniu całej zawartości opisywanej instrukcji warunkowej zostaje utworzony kolejny niewidoczny węzeł pomocniczy, który łączy obie gałęzie w momencie wychodzenia z obszaru wewnętrznego $if-else$ (wywołanie metody obserwowanej onIfStatementExit). Na koniec węzeł decyzyjny, którego obszar właśnie został zamknięty, zostaję zdjęty ze stosu.
+	
+	
 	

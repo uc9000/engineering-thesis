@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{graph} \PYG{n}{TD}\PYG{p}{;}
+\PYG{n}{N1}\PYG{p}{([}\PYG{l+s+s2}{\PYGZdq{}start()\PYGZdq{}} \PYG{p}{]);}
+\PYG{n}{N2}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}int i=0\PYGZdq{}} \PYG{p}{];}
+\PYG{n}{N5}\PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}i\PYGZlt{}10\PYGZdq{}} \PYG{p}{\PYGZcb{};}
+\PYG{n}{N6}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}i++\PYGZdq{}} \PYG{p}{];}
+\PYG{n}{N7}\PYG{p}{([}\PYG{l+s+s2}{\PYGZdq{}end()\PYGZdq{}} \PYG{p}{]);}
+\PYG{n}{N1}\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}}\PYG{n}{N2}\PYG{p}{;}
+\PYG{n}{N2}\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}}\PYG{n}{N5}\PYG{p}{;}
+\PYG{n}{N5}\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}|}\PYG{k+kc}{True}\PYG{o}{|}\PYG{n}{N6}\PYG{p}{;}
+\PYG{n}{N5}\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}|}\PYG{k+kc}{False}\PYG{o}{|}\PYG{n}{N7}\PYG{p}{;}
+\PYG{n}{N6}\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}}\PYG{n}{N5}\PYG{p}{;}
+\end{Verbatim}
