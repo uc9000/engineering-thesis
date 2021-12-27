@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.19)  26 DEC 2021 23:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.19)  27 DEC 2021 01:07
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -103,13 +103,14 @@ File: babel.def 2021/03/24 3.56 Babel common definitions
 \bbl@readstream=\read2
 )
 \bbl@dirlevel=\count267
- (/usr/share/texmf-dist/tex/generic/babel-polish/polish.ldf
-Language: polish 2005/03/31 v1.2l Polish support from the babel system
-Package babel Info: Making " an active character on input line 83.
-\pl@left=\dimen149
-\pl@down=\dimen150
-\pl@right=\dimen151
-\pl@temp=\dimen152
+ (/usr/share/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: \l@canadian = using hyphenrules for english
+(babel)             (\language0) on input line 102.
+Package babel Info: \l@australian = using hyphenrules for ukenglish
+(babel)             (\language21) on input line 105.
+Package babel Info: \l@newzealand = using hyphenrules for ukenglish
+(babel)             (\language21) on input line 108.
 )) (/usr/share/texmf-dist/tex/latex/tools/indentfirst.sty
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 ) (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -144,7 +145,7 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 ) (/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
-\@linkdim=\dimen153
+\@linkdim=\dimen149
 \Hy@linkcounter=\count268
 \Hy@pagecounter=\count269
  (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
@@ -177,15 +178,15 @@ Package hyperref Info: Bookmarks ON on input line 4445.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4804.
-\XeTeXLinkMargin=\dimen154
+\XeTeXLinkMargin=\dimen150
  (/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
 \Fld@menulength=\count272
-\Field@Width=\dimen155
-\Fld@charsize=\dimen156
+\Field@Width=\dimen151
+\Fld@charsize=\dimen152
 Package hyperref Info: Hyper figures OFF on input line 6075.
 Package hyperref Info: Link nesting OFF on input line 6080.
 Package hyperref Info: Hyper index ON on input line 6083.
@@ -246,16 +247,16 @@ Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \linenopenalty=\count282
 \output=\toks23
 \linenoprevgraf=\count283
-\linenumbersep=\dimen157
-\linenumberwidth=\dimen158
+\linenumbersep=\dimen153
+\linenumberwidth=\dimen154
 \c@linenumber=\count284
 \c@pagewiselinenumber=\count285
 \c@LN@truepage=\count286
 \c@internallinenumber=\count287
 \c@internallinenumbers=\count288
-\quotelinenumbersep=\dimen159
-\bframerule=\dimen160
-\bframesep=\dimen161
+\quotelinenumbersep=\dimen155
+\bframerule=\dimen156
+\bframesep=\dimen157
 \bframebox=\box50
 LaTeX Info: Redefining \\ on input line 3056.
 )
@@ -267,26 +268,26 @@ LaTeX Info: Redefining \\ on input line 3056.
 \c@FV@HighlightLinesStop=\count292
 \FV@LoopCount=\count293
 \FV@NCharsBox=\box52
-\FV@BreakIndent=\dimen162
+\FV@BreakIndent=\dimen158
 \FV@BreakIndentNChars=\count294
-\FV@BreakSymbolSepLeft=\dimen163
+\FV@BreakSymbolSepLeft=\dimen159
 \FV@BreakSymbolSepLeftNChars=\count295
-\FV@BreakSymbolSepRight=\dimen164
+\FV@BreakSymbolSepRight=\dimen160
 \FV@BreakSymbolSepRightNChars=\count296
-\FV@BreakSymbolIndentLeft=\dimen165
+\FV@BreakSymbolIndentLeft=\dimen161
 \FV@BreakSymbolIndentLeftNChars=\count297
-\FV@BreakSymbolIndentRight=\dimen166
+\FV@BreakSymbolIndentRight=\dimen162
 \FV@BreakSymbolIndentRightNChars=\count298
 \c@FancyVerbLineBreakLast=\count299
 \FV@LineBox=\box53
 \FV@LineIndentBox=\box54
-\FV@LineWidth=\dimen167
+\FV@LineWidth=\dimen163
 ) (/usr/share/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count300
 \calc@Bcount=\count301
-\calc@Adimen=\dimen168
-\calc@Bdimen=\dimen169
+\calc@Adimen=\dimen164
+\calc@Bdimen=\dimen165
 \calc@Askip=\skip54
 \calc@Bskip=\skip55
 LaTeX Info: Redefining \setlength on input line 80.
@@ -316,10 +317,10 @@ Package: xstring 2019/02/06 v1.83 String manipulations (CT)
 ) (/usr/share/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip57
-\fb@frw=\dimen170
-\fb@frh=\dimen171
-\FrameRule=\dimen172
-\FrameSep=\dimen173
+\fb@frw=\dimen166
+\fb@frh=\dimen167
+\FrameRule=\dimen168
+\FrameSep=\dimen169
 ) (/usr/share/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count305
@@ -344,13 +345,13 @@ Package: subcaption 2020/10/07 v1.3j Sub-captions (AR)
 Package: caption 2020/10/26 v3.5g Customizing captions (AR)
  (/usr/share/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
-\captionmargin=\dimen174
-\captionmargin@=\dimen175
-\captionwidth=\dimen176
-\caption@tempdima=\dimen177
-\caption@indent=\dimen178
-\caption@parindent=\dimen179
-\caption@hangindent=\dimen180
+\captionmargin=\dimen170
+\captionmargin@=\dimen171
+\captionwidth=\dimen172
+\caption@tempdima=\dimen173
+\caption@indent=\dimen174
+\caption@parindent=\dimen175
+\caption@hangindent=\dimen176
 Package caption Info: Standard document class detected.
 )
 \c@caption@flags=\count309
@@ -368,14 +369,14 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@cnth=\count313
 \Gm@cntv=\count314
 \c@Gm@tempcnt=\count315
-\Gm@bindingoffset=\dimen181
-\Gm@wd@mp=\dimen182
-\Gm@odd@mp=\dimen183
-\Gm@even@mp=\dimen184
-\Gm@layoutwidth=\dimen185
-\Gm@layoutheight=\dimen186
-\Gm@layouthoffset=\dimen187
-\Gm@layoutvoffset=\dimen188
+\Gm@bindingoffset=\dimen177
+\Gm@wd@mp=\dimen178
+\Gm@odd@mp=\dimen179
+\Gm@even@mp=\dimen180
+\Gm@layoutwidth=\dimen181
+\Gm@layoutheight=\dimen182
+\Gm@layouthoffset=\dimen183
+\Gm@layoutvoffset=\dimen184
 \Gm@dimlist=\toks27
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 26.
@@ -392,8 +393,8 @@ Package graphics Info: Driver file: pdftex.def on input line 105.
  (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen189
-\Gin@req@width=\dimen190
+\Gin@req@height=\dimen185
+\Gin@req@width=\dimen186
 ) (/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
  (/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
@@ -496,13 +497,13 @@ Package caption Info: End \AtBeginDocument code.
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count318
-\scratchdimen=\dimen191
+\scratchdimen=\dimen187
 \scratchbox=\box59
 \nofMPsegments=\count319
 \nofMParguments=\count320
 \everyMPshowfont=\toks28
 \MPscratchCnt=\count321
-\MPscratchDim=\dimen192
+\MPscratchDim=\dimen188
 \MPnumerator=\count322
 \makeMPintoPDFobject=\count323
 \everyMPtoPDFconversion=\toks29
@@ -534,17 +535,22 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 <to be read again> 
                    \relax 
 l.53 \chapter
-             {WstÄ™p} [1
+             {Introduction} [1
 
 ]
-Rozdzia\l  1.
-(/home/jordan/Dokumenty/studia/inzynierka/praca/chapters/chapter1.tex [2
+Chapter 1.
+(/home/jordan/Dokumenty/studia/inzynierka/praca/chapters/chapter1.tex
+Overfull \hbox (9.2091pt too wide) in paragraph at lines 4--4
+[]\T1/cmr/bx/n/17.28 Examples of ex-ist-ing so-lu-tions for draw-ing flowcharts 
+ []
+
+[2
 
 ]
-<./img//decyzja-while.png, id=140, 157.33781pt x 218.31563pt>
+<./img//decyzja-while.png, id=139, 157.33781pt x 218.31563pt>
 File: ./img//decyzja-while.png Graphic file (type png)
 <use ./img//decyzja-while.png>
-Package pdftex.def Info: ./img//decyzja-while.png  used on input line 25.
+Package pdftex.def Info: ./img//decyzja-while.png  used on input line 26.
 (pdftex.def)             Requested size: 135.2073pt x 187.61784pt.
 \openout3 = `main.pyg'.
 
@@ -559,9 +565,9 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
 \openout3 = `main.pyg'.
 
  (/home/jordan/Dokumenty/studia/inzynierka/praca/_minted-main/845D931B2D11F4D5FA55BA8CF6E0C34E4FBEEAFC55D0059826E664B9BBCF3721.pygtex) [3 </home/jordan/Dokumenty/studia/inzynierka/praca/./img//decyzja-while.png (PNG copy)>]) [4]
-Rozdzia\l  2.
+Chapter 2.
 (/home/jordan/Dokumenty/studia/inzynierka/praca/chapters/chapter2.tex
-<./img//proces.png, id=151, 85.82062pt x 177.66376pt>
+<./img//proces.png, id=150, 85.82062pt x 177.66376pt>
 File: ./img//proces.png Graphic file (type png)
 <use ./img//proces.png>
 Package pdftex.def Info: ./img//proces.png  used on input line 7.
@@ -577,10 +583,15 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 21.
 
+
+Overfull \hbox (12.65048pt too wide) in paragraph at lines 23--24
+\T1/cmr/m/n/12 bloczków pro-cesu) wykony-wane w przy-padku speªnienia warunku (bezpo±red-nio pod scope'm
+ []
+
 [5
 
  </home/jordan/Dokumenty/studia/inzynierka/praca/./img//proces.png (PNG copy)>]
-<./img//decyzja-if.png, id=158, 287.57437pt x 219.82124pt>
+<./img//decyzja-if.png, id=157, 287.57437pt x 219.82124pt>
 File: ./img//decyzja-if.png Graphic file (type png)
 <use ./img//decyzja-if.png>
 Package pdftex.def Info: ./img//decyzja-if.png  used on input line 28.
@@ -603,7 +614,7 @@ Package pdftex.def Info: ./img//decyzja-while.png  used on input line 52.
 \openout3 = `main.pyg'.
 
 (/home/jordan/Dokumenty/studia/inzynierka/praca/_minted-main/DDF80A8916344938BDAA4414178EB82F504A7AF0CD3BAA7542030FC560DFCC45.pygtex) [6 </home/jordan/Dokumenty/studia/inzynierka/praca/./img//decyzja-if.png (PNG copy)>]
-<./img//aplikacja-flowchart.png, id=167, 968.11688pt x 685.05937pt>
+<./img//aplikacja-flowchart.png, id=166, 968.11688pt x 685.05937pt>
 File: ./img//aplikacja-flowchart.png Graphic file (type png)
 <use ./img//aplikacja-flowchart.png>
 Package pdftex.def Info: ./img//aplikacja-flowchart.png  used on input line 72.
@@ -611,9 +622,9 @@ Package pdftex.def Info: ./img//aplikacja-flowchart.png  used on input line 72.
 \openout3 = `main.pyg'.
 
  (/home/jordan/Dokumenty/studia/inzynierka/praca/_minted-main/65B3DE50D734B59DF2AD8F9275436B20504A7AF0CD3BAA7542030FC560DFCC45.pygtex)) [7 </home/jordan/Dokumenty/studia/inzynierka/praca/./img//aplikacja-flowchart.png (PNG copy)>]
-Rozdzia\l  3.
+Chapter 3.
 (/home/jordan/Dokumenty/studia/inzynierka/praca/chapters/chapter3.tex
-<./img//GUI.png, id=174, 419.31656pt x 292.09125pt>
+<./img//GUI.png, id=173, 419.31656pt x 292.09125pt>
 File: ./img//GUI.png Graphic file (type png)
 <use ./img//GUI.png>
 Package pdftex.def Info: ./img//GUI.png  used on input line 14.
@@ -621,7 +632,7 @@ Package pdftex.def Info: ./img//GUI.png  used on input line 14.
  [8
 
 ]
-<./img//error-page.png, id=180, 316.93407pt x 111.41624pt>
+<./img//error-page.png, id=179, 316.93407pt x 111.41624pt>
 File: ./img//error-page.png Graphic file (type png)
 <use ./img//error-page.png>
 Package pdftex.def Info: ./img//error-page.png  used on input line 29.
@@ -635,7 +646,7 @@ Package pdftex.def Info: ./img//error-page.png  used on input line 29.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 3.
 ) [9 </home/jordan/Dokumenty/studia/inzynierka/praca/./img//GUI.png (PNG copy)> </home/jordan/Dokumenty/studia/inzynierka/praca/./img//error-page.png (PNG copy)>]
-<./img//terminal-log.png, id=187, 462.97969pt x 140.77594pt>
+<./img//terminal-log.png, id=186, 462.97969pt x 140.77594pt>
 File: ./img//terminal-log.png Graphic file (type png)
 <use ./img//terminal-log.png>
 Package pdftex.def Info: ./img//terminal-log.png  used on input line 77.
@@ -650,33 +661,43 @@ Package pdftex.def Info: ./img//terminal-log.png  used on input line 77.
 \openout3 = `main.pyg'.
 
  (/home/jordan/Dokumenty/studia/inzynierka/praca/_minted-main/E1917B1858F9245AA345E1748BC9ABB996F4A172713D9CAFDFB180198F2E831C.pygtex) [11]
-<./img//uml-akcelerator.png, id=201, 651.93562pt x 526.96875pt>
+<./img//uml-akcelerator.png, id=200, 651.93562pt x 526.96875pt>
 File: ./img//uml-akcelerator.png Graphic file (type png)
 <use ./img//uml-akcelerator.png>
 Package pdftex.def Info: ./img//uml-akcelerator.png  used on input line 151.
 (pdftex.def)             Requested size: 455.24408pt x 367.9911pt.
- [12 </home/jordan/Dokumenty/studia/inzynierka/praca/./img//uml-akcelerator.png (PNG copy)>]
+
+Overfull \hbox (26.22496pt too wide) in paragraph at lines 156--157
+\T1/cmr/m/n/12 umo»li-wia-j¡cy ªatwe tworze-nie i zarz¡dzanie poszczegól-nymi el-e-men-tami schematów blokowych,
+ []
+
+[12 </home/jordan/Dokumenty/studia/inzynierka/praca/./img//uml-akcelerator.png (PNG copy)>]
 \openout3 = `main.pyg'.
 
- (/home/jordan/Dokumenty/studia/inzynierka/praca/_minted-main/CA0EC509DB7FCD930727924E0184765B96F4A172713D9CAFDFB180198F2E831C.pygtex) [13]) [14] (/home/jordan/Dokumenty/studia/inzynierka/praca/main.aux)
+ (/home/jordan/Dokumenty/studia/inzynierka/praca/_minted-main/CA0EC509DB7FCD930727924E0184765B96F4A172713D9CAFDFB180198F2E831C.pygtex)
+Overfull \hbox (0.2833pt too wide) in paragraph at lines 200--201
+\T1/cmr/m/n/12 ter) warunek zostaje pod-dany usuni¦-ciu wszys-t-kich spec-jal-nych znaków, za-st¡pi-e-niu znaku
+ []
+
+[13]) [14] (/home/jordan/Dokumenty/studia/inzynierka/praca/main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 743458D8DCAA68767CA21529AD4B986B;4478.
+(rerunfilecheck)             Checksum: 5F42EE2C80AF1200965DF9FBA8C81F79;4438.
 runsystem(rm main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 15635 strings out of 478994
- 251972 string characters out of 5864750
- 615446 words of memory out of 5000000
- 32763 multiletter control sequences out of 15000+600000
+ 15547 strings out of 478994
+ 251136 string characters out of 5864750
+ 612751 words of memory out of 5000000
+ 32675 multiletter control sequences out of 15000+600000
  420897 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,9n,88p,1726b,773s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 83i,9n,88p,1643b,747s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on /home/jordan/Dokumenty/studia/inzynierka/praca/main.pdf (15 pages, 831578 bytes).
+Output written on /home/jordan/Dokumenty/studia/inzynierka/praca/main.pdf (15 pages, 828993 bytes).
 PDF statistics:
- 278 PDF objects out of 1000 (max. 8388607)
- 235 compressed objects within 3 object streams
+ 277 PDF objects out of 1000 (max. 8388607)
+ 234 compressed objects within 3 object streams
  51 named destinations out of 1000 (max. 500000)
  214 words of extra memory for PDF output out of 10000 (max. 10000000)
 
