@@ -1,5 +1,5 @@
-\section{Bloczki procesu oraz start/end}
-	Bloczek procesu jak nazwa wskazuje odpowiada za każdą akcje. W przypadku analizy kodu programistycznego bloczek ten odpowiada wywołaniu funkcji lub przypisaniu. Bloczek start/end w przypadku tej aplikacji od bloczka procesu różni się jedynie tym, że sygnalizuje on punkt startowy oraz wszystkie możliwe zakończenia algorytmu w danym schemacie. Aplikacja automatycznie zastępuje bloczki procesu występujące na początku i na końcu bloczkiem start/end. Dodatkowo aplikacja ignoruje wszystkie znaki typu $whitespace$ . Jeśli chcemy wprowadzić znak spacji do schematu należy użyć znaku "\_" (underscore), który zostanie zastąpiony. Aplikacja nie wymusza użycia elementów składniowych implikujących, że jest to wywołanie funkcji (zakończenie "...();") lub przypisanie (operator "="), do narysowania tego bloczku wymagane jest jedynie, by użyte były wyłącznie znaki należące do alfabetu w dowolnym języku (mające swój odpowiednik w Unicode),  
+\section{Process and start/end blocks}
+The process block, as the name suggests, is responsible for each action. For programming code analysis, this block corresponds to a function call or an assignment operation. The start / end block in this application differs from the process block only in that it signals the starting point and all possible endings of the algorithm in a given scheme. The application automatically replaces the process blocks at the beginning and end with a start / end block. Additionally, the application ignores all $whitespace$ characters. If we want to enter a space character in the diagram block, use the character "\_" (underscore), which will be replaced. The application does not force the use of syntax elements implying that it is a function call (ending with "... ();") or an assignment (operator "="), to draw this block it is only required that only word characters  are used in any language (if having a Unicode equivalent). 
 	
 	\begin{figure}[H]
   \begin{subfigure}[t]{0.49\textwidth}
@@ -14,13 +14,13 @@ proces();
 end();
     \end{minted}
   \end{subfigure}%
-  \caption{Bloczki procesu, start/end wraz z kodem, który je generuje}
+  \caption{Process, start/end blocks with the code that created those blocks }
 \end{figure}
 
-\section{Bloczek warunkowy}
-	\subsection{dla instrukcji $if-else$}	
+\section{Conditional block }
+	\subsection{$if-else$ statement }	 
 	
-		Aplikacja rozpoznaje składnie instrukcji i z podanego warunku tworzy bloczek decyzyjny. Następnie tworzy dwa rozgałęzienia odpowiadające za akcje (dowolna ilość bloczków procesu) wykonywane w przypadku spełnienia warunku (bezpośrednio pod scope'm intrukcji $if$) lub nie spełnienia (pod scope'm instrukcji $else$, a następnie instrukcje znajujące się poza intrukcją $if$) 
+	  The application recognizes the syntax of the statement and creates a decision block from the given condition. Then it creates two branches responsible for actions (any number of process blocks) performed in the event of the condition being met (directly under the scope of the $if$ statement) or not being met (under the scope of the $else$ statement), and then the instructions outside the $if-else$ statement after both branches are being merged.   
 		
 \begin{figure}[H]
   \begin{subfigure}[t]{0.49\textwidth}
@@ -39,10 +39,10 @@ else{
 end();
     \end{minted}
   \end{subfigure}%
-  \caption{Bloczek warunkowy utworzony przy użyciu instrukcji $if$}
+  \caption{Conditional block created with the $if$ statement}
 \end{figure}
-	
-		\subsection{dla instrukcji $while$}	
+
+		\subsection { $while$ statement } 
 	
 		Interpretacja warunku działa analogicznie jak przy instrukcji $if$, podobnie również działa dołączanie kolejnych instrukcji wykonujących się po spełnieniu warunku z tą różnicą, że ostatni proces tej gałęzi łączony jest automatycznie z bloczkiem decyzyjnym instrukcji $while$. Nie spełnienie warunku odpowiada gałęzi na której znajdują się procesy umieszczone poza scope'm  tego typu instrukcji warunkowej.
 	
