@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{ELSE\PYGZus{}PATTERN} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}\PYGZbs{}\PYGZbs{}\PYGZcb{}else\PYGZbs{}\PYGZbs{}\PYGZob{}.*\PYGZdq{}}\PYG{p}{;}
-\PYG{n}{IF\PYGZus{}PATTERN} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}if\PYGZbs{}\PYGZbs{}(.*\PYGZdq{}}\PYG{p}{;}
-\PYG{n}{WHILE\PYGZus{}PATTERN} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}while\PYGZbs{}\PYGZbs{}(.*\PYGZdq{}}\PYG{p}{;}
-\PYG{n}{EXPRESSION\PYGZus{}PATTERN} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}([\PYGZbs{}\PYGZbs{}w\PYGZbs{}\PYGZbs{}+\PYGZbs{}\PYGZbs{}\PYGZhy{}=\PYGZbs{}\PYGZbs{}(\PYGZbs{}\PYGZbs{})\PYGZbs{}\PYGZbs{}.,\PYGZlt{}\PYGZgt{}/]+?;).*\PYGZdq{}}\PYG{p}{;}
-\PYG{n}{END\PYGZus{}SCOPE\PYGZus{}PATTERN} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}\PYGZbs{}\PYGZbs{}\PYGZcb{}.*\PYGZdq{}}\PYG{p}{;}
-\end{Verbatim}
