@@ -1,27 +1,26 @@
-	Rozdział poświęcony jest ogólnemu opisowi działania poszczególnych fragmentów aplikacji zarówno od strony jej użytkownika jak i kodu źródłowego.
+The chapter is devoted to a general description of the operation of individual parts of the application, both from the perspective of the user and the source code.
 
-\section{Interfejs użytkownika}
-	Graficznym interfejsem użytkownika (GUI) jest prosty formularz HTML, domyślnie dostępny w oknie przeglądarki internetowej po uruchomieniu aplikacji pod adresem lokalnego hosta na porcie 8080: 
+\section{Graphical user interface}
+  The graphical user interface (GUI) is a simple HTML form, available by default in a web browser window after running the application at the local host address on port 8080: 
 	\smallbreak
 	\href{http://localhost:8080/flowchart/}{localhost:8080/flowchart/}.
 	\bigbreak	
-	Domyślnie GUI zawiera w górnej części pole z wygenerowanym diagramem blokowym, a pod nim  menu rozwijane umożliwiające wybór składni kodu zarówno Mermaid jak i C-podobnego (dropdown select menu), pole tekstowe (text area) do wprowadzania samego kodu oraz przycisk potwierdzający przesłanie typu wybranej składni i kodu przez Rest API. Żądanie typu GET obsługiwane przez kontroler Rest dopuszczający dwa opcjonalne parametry: typ składni ($type$) - domyślnie przyjmujący składnie Mermaid, kod umieszczony w polu tekstowym ($originalCode$) - domyślnie rysujący dwa proste bloczki. Jakiekolwiek wyrzucenie wyjątku przez program zostaje obsłużone właśnie w kontrolerze, po czym przekazana zostaje wiadomość w nim zawarta do ekranu błędu.
-
+  By default, the GUI contains a field with a generated flowchart diagram in the upper part, and a drop-down select menu, which allows the user to select the syntax of both Mermaid and C-based code, a text area for entering the code itself and a button confirming the submission of the selected syntax type and entered code via Rest API. HTTP requests of type GET handled by the Rest controller allowing two optional parameters: syntax type ($type$) - Mermaid by default, code placed in the text field ($originalCode$) - by default drawing two simple blocks. Any throwing of an exception by the program is handled by the controller, and then the message contained in it is forwarded to the error screen.
 	
 \begin{figure}[H]
   \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[width=0.8\textwidth]{GUI.png}
   \end{subfigure}\hfill
-  \caption{Interfejs graficzny użytkownika wyświetlony przy pomocy przeglądarki Vivaldi 5. }
+  \caption{GUI displayed in web browser (Vivaldi 5)}
 \end{figure}
 
-Przykładowy schemat blokowy dostępny pod adresem: 
+Example flowchart available under the URL address: 
 	\smallbreak
 	\href{http://localhost:8080/flowchart/?type=C\&originalCode=Start();Proces();End();}{http://localhost:8080/flowchart/?type=C\&originalCode=Start();Proces();End();}
 	\bigbreak
 	
-	Dodatkowym ekranem jest strona HTML, która wyświetla komunikat o błędzie składniowym oraz pokazuje fragment kodu w którym ten błąd nastąpił.
+  An additional screen is an HTML page that displays a syntax error message and shows the code fragment where the error occurred.
 	
 \begin{figure}[H]
   \begin{subfigure}{\textwidth}
@@ -30,7 +29,7 @@ Przykładowy schemat blokowy dostępny pod adresem:
   \end{subfigure}\hfill
     \begin{subfigure}[t]{0.44\textwidth}
     \bigbreak
-    Dla kodu:
+    Generated for the below code:
     \centering
     \begin{minted}[linenos=true]{cpp}    
 Start();
@@ -38,7 +37,7 @@ Proces();{
 End();
     \end{minted}
   \end{subfigure}%
-  \caption{Przykład ekranu wyświetlającego błąd składniowy}
+  \caption{Example of a screen displaying syntax error}
 \end{figure}
 
 
@@ -65,24 +64,24 @@ public ModelAndView flowchart(
 }
 			\end{minted}
 	\end{subfigure}\hfill
-  	\caption{Kontroler Rest obsługujący zapytania metodą GET protokołu HTTP z dwoma parametrami, który przekierowuje na stronę z narysowanym schematem lub ekran błędu }
+  	\caption{Rest controller that supports queries with the GET method of the HTTP protocol with two parameters, which redirects to a page with a drawn diagram or an error screen}
 \end{figure}
 
 \bigbreak
-	Do lepszego śledzenia przebiegu działania programu i ewentualnych błędów w terminalu, w którym uruchomiona jest aplikacja wyświetlają się szczegółowe logi z każdego etapu działania programu:	
+To better track the course of the program and any errors in the terminal in which the application is running, detailed logs from each stage of the program's operation are displayed:
 		
 \begin{figure}[H]
   \begin{subfigure}{\textwidth}
   \centering
     \includegraphics[width=\textwidth]{terminal-log.png}
   \end{subfigure}\hfill
-  \caption{Przykładowy zapis w terminalu z przebiegu programu zakończonego błędem. }
+  \caption{Sample log in the terminal from the program run which ended with an error. }
 \end{figure}
 	
 
-\section{Lexer i parser kodu języka C-podobnego}
+\section{Lexer and parser of a C-based language}
 	\subsection{Lexer} 
-	W języku Java 11 SE stworzony został lexer kodu zintegrowany jest z parserem i jego podstawowym zadaniem jest rozpoznawanie instrukcji obsługiwanych przez aplikacje za pomocą wyrażeń regularnych oraz zapewnienia zrównoważonego użycia nawiasów zarówno okrągłych jak i klamrowych w odpowiedniej kolejności, zgodnie z zasadami programowania języka C. 
+  The Java 11 SE language has a code lexer integrated with the parser and its main task is to recognize instructions handled by applications using regular expressions and to ensure a balanced use of both round and curly brackets in the right order, in accordance with the C programming rules. 
 
 		\break
 		
@@ -97,11 +96,11 @@ EXPRESSION_PATTERN = "([\\w\\+\\-=\\(\\)\\.,<>/]+?;).*";
 END_SCOPE_PATTERN = "\\}.*";
 			\end{minted}
   \end{subfigure}\hfill
-  \caption{Lista rozpoznawalnych przez lexer wyrazów regularnych (REGEX)}
+  \caption{List of recognizable by lexer regular expressions (REGEX patterns)}
 \end{figure}
 			
 	\subsection{Parser} 		
-	Parser kodu napisany jest w oparciu o recursive descent parser użyty m. in. w kompilatorach języka C takich jak: GCC oraz Clang. Polega on na rekursywnym wywoływaniu funkcji wczytującej kolejne instrukcje rozpoznane przez lexer oraz zależnie od rodzaju tych instrukcji wyciąga treść argumentu (w nawiasach okrągłych) oraz zawartość zakresu wewnętrznego (tzw. scope) instrukcji (w nawiasach klamrowych).		
+  The code parser is written based on the recursive descent parser used in C/C++ compilers such as: GCC and Clang among others. It consists in recursively calling the function that reads subsequent instructions recognized by the lexer and, depending on the type of these instructions, extracts the argument content (in round brackets) and the content of the internal scope of the instruction (in curly brackets).
 						
 \begin{figure}[H]
   \begin{subfigure}{\textwidth}
@@ -117,10 +116,10 @@ private void handleIfStatement(){
 }
 			\end{minted}
   \end{subfigure}\hfill
-  \caption{Przykładowa funkcja, która izoluje z instrukcji $if$ jej argument (condition) oraz zawartość jej obszaru wewnętrznego (expressions), a następnie przekazuje te wartości do tzw. metody obserwowanej (onIfStatementEnter)}
+  \caption{An example function that isolates its argument (condition variable) and the contents of its inner scope (expressions variable) from the $if$ statement, and then passes these values to the so-called observable method (onIfStatementEnter)}
 \end{figure}
 		
-	 Otwarcie nowego zakresu w tym przypadku możliwe jest jedynie w instrukcjach $if - else$ oraz $while$. Aby umożliwić obsługę zagnieżdżeń tych instrukcji, enum reprezentujący jej typ z każdorazowym wejściem w jej zakres wewnętrzny (scope) jest odkładany na stos, a z wyjściem z zakresu zdejmowany z tego stosu co ma na celu późniejsze użycie samoczynnie wywołujących się metod obserwowanych (observable) we wzorcu projektowym $Obserwator$ ($Observer$). W przypadku instrukcji odpowiadającym procesom (dowolny tekst bez znaków specjalnych zakończony średnikiem) metoda obserwująca informuje jedynie o samym jej wywołaniu, natomiast w przypadku instrukcji warunkowych występują metody dedykowane wejściu oraz wyjściu z obszaru tej instrukcji. Domyślna metoda obserwowana jedynie wyświetla w terminalu podstawowe informacje o danej instrukcji, natomiast informacje te mogą być dowolnie wykorzystane wersji tej klasy z nadpisanymi definicjami jej metod obserwowanych. 
+In this case, opening a new scope is possible only in the $if - else$ and $while$ statements. To support the multiple nesting of those statements, an enumeration representing its statement type with each entry in its scope is pushed onto the stack and later removed from the stack with the scope exit to keep track of the current scope and assure that the correct observable methods are being self-invoked (as in the $Observer$ design pattern). In the case of instructions corresponding to process blocks (any text without the use of special characters, terminated with a semicolon), the observable method informs only about its invocation, while in the case of conditional statements ($if-else$ and $while$), there are methods dedicated to entering and exiting the area of this instruction. The default observable method only displays the basic information about the instruction in the terminal, but this information can be used freely by the version of that class with overwritten definitions of its observable methods. 
 						
 \begin{figure}[H]
   \begin{subfigure}{\textwidth}
@@ -138,26 +137,26 @@ public void onElseStatementEnter(String expressions){
 }
 		\end{minted}
   \end{subfigure}\hfill
-  \caption{Przykład domyślnych definicji metod obserwowanych dla instrukcji $if/else$}
+  \caption{An example of the default definition of observed methods for a $if/else$ statement}
 \end{figure}
 
 
 
-\section{Akcelerator budowania kodu w języku wymaganym przez Mermaid}
+\section{Accelerator for building code required by Mermaid}
 
 \begin{figure}[H]
   \begin{subfigure}{\textwidth}
   	\centering
     \includegraphics[width=\textwidth]{uml-akcelerator.png}
   \end{subfigure}\hfill
-  \caption{Diagram UML klas z których powstał akcelerator budowania kodu Mermaid }
+  \caption{UML diagram of classes from which the Mermaid code building accelerator was created}
 \end{figure}
 
-	Do ułatwienia tworzenia schematów blokowych powstał akcelerator - zestaw klas, umożliwiający łatwe tworzenie i zarządzanie poszczególnymi elementami schematów blokowych, a następnie konwersja tych elementów w pamięci programu na kod docelowy, wymagany przez Mermaid. Docelowo składa się on z listy węzłów (nodes) odpowiadającym poszczególnym bloczkom oraz połączeniom (links) generowanym na podstawie relacji między tymi węzłami. 	Za pomocą akcesorów oraz innych publicznych metod wyszczególnionych na powyższym diagramie UML można w łatwy sposób tworzyć nowe węzły, nadawać im ich typ oraz łączyć je ze sobą.
+To facilitate the creation of flowcharts, an accelerator was created - a set of classes that allows the programmer to easily create and manage individual elements of flowcharts, and then convert these elements in the program's memory to the target code required by Mermaid. Ultimately, it consists of a list of nodes corresponding to individual blocks and links generated on the basis of relations between these nodes. Using accessors and other public methods detailed in the UML diagram above, the programmer can easily create new nodes, assign the correct type, and connect them together.
 
-\section{Konwerter kodu języka C-podobnego na język Mermaid}
+\section{Converter from C-based language to Mermaid language}
 
-	Konwerter ten wykorzystuje wcześniej wspomniany wzorzec projektowy Obserwator. W tym przypadku nadpisuje on domyślne definicje wcześniej opisanych metod obserwowanych. Zaraz po wywołaniu takiej nadpisanej metody, zależnie od tego do jakiej akcji została ona przypisana wykonuje określone akcje, również z argumentami przekazanymi przez te metody.
+This converter uses the previously mentioned $Observer$ design pattern. In this case, it overrides the default definitions of the observable methods previously described. Immediately after calling such an overridden method, depending on what action it was assigned to, it performs certain instructions, also using arguments passed by these methods.
 	
 							
 \begin{figure}[H]
@@ -194,10 +193,7 @@ public void onElseStatementEnter(String expressions){
 }
 		\end{minted}
   \end{subfigure}\hfill
-  \caption{Przykład nadpisanych definicji metod obserwowanych dla instrukcji $if-else$}
+  \caption{Example of overridden observable methods that are being self-invoked as interpretation of the C-based code goes by encountering the $if-else$ statement}
 \end{figure}
 
-	Na powyższym przykładzie, po wejściu w instrukcję warunkową $if$ (onIfStatementEnter) warunek zostaje poddany usunięciu wszystkich specjalnych znaków, zastąpieniu znaku "\_" (underscore) przez " " (spacja). Następnie treść tego warunku poddana zostaje zawijaniu tekstu. Później po wstępnie przygotowanej zawartości warunku, z pomocą akceleratora budowania kodu Mermaid utworzony zostaje węzeł odpowiadający za bloczek decyzyjny. W związku z tym, że węzeł ten otwiera nowy obszar wewnętrzny (scope) zostaje on dodany do stosu (scopeNodes) śledzącego, który obszar jest w danym momencie wykonywany. Z bloczka decyzyjnego domyślnie wychodzą dwie gałęzi (jest połączony na wyjściu z dwoma pomocniczymi węzłami, które są niewidoczne), do końca pierwszej z nich (index = 0) przyłączane są kolejno instrukcje zawarte w obszarze wewnętrznym, odczytywane rekurencyjnie zgodnie z działaniem parsera, natomiast do końca drugiej gałęzi (index = 1) zostają przyłączane instrukcje po wywołaniu funkcji odpowiadającej instrukcji $else$. Po przetworzeniu całej zawartości opisywanej instrukcji warunkowej zostaje utworzony kolejny niewidoczny węzeł pomocniczy, który łączy obie gałęzie w momencie wychodzenia z obszaru wewnętrznego $if-else$ (wywołanie metody obserwowanej onIfStatementExit). Na koniec węzeł decyzyjny, którego obszar właśnie został zamknięty, zostaję zdjęty ze stosu.
-	
-	
-	
+In the above example, after entering the $if$ (onIfStatementEnter) conditional statement, the condition is subjected to removing all special characters, replacing "\_" (underscore) with " " (white-space). Then the content of that condition is subjected to a text wrap. Later, after the initially prepared condition content, a node responsible for the decision block is created with the help of the Mermaid code building accelerator. Due to the fact that this node opens a new inner scope, it is added to the stack (scopeNodes) tracking which scope is being executed at the moment. By default, two branches come out of the decision block -- scope opening node is connected (by holding the references in the list of outputs) with two temporary helper nodes (that are removed at the end of code parsing), to the end of the first one (index = 0) the instructions contained in the inner scope are sequentially attached, read recursively according to the parser, while to the last node of the second branch (index = 1), statements are appended when the function corresponding to the $else$ statement is called. After processing all contents of the described conditional statement, another temporary helper node is created that merges both branches when leaving the inner $if-else$ scope (by calling the onIfStatementExit observable method). Finally, the decision node whose scope has just been closed is removed from the stack.
