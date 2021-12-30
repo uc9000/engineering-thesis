@@ -8,7 +8,7 @@
 	Domyślnie GUI zawiera w górnej części pole z wygenerowanym diagramem blokowym, a pod nim  menu rozwijane umożliwiające wybór składni kodu zarówno Mermaid jak i C-podobnego (dropdown select menu), pole tekstowe (text area) do wprowadzania samego kodu oraz przycisk potwierdzający przesłanie typu wybranej składni i kodu przez Rest API. Żądanie typu GET obsługiwane przez kontroler Rest dopuszczający dwa opcjonalne parametry: typ składni ($type$) - domyślnie przyjmujący składnie Mermaid, kod umieszczony w polu tekstowym ($originalCode$) - domyślnie rysujący dwa proste bloczki. Jakiekolwiek wyrzucenie wyjątku przez program zostaje obsłużone właśnie w kontrolerze, po czym przekazana zostaje wiadomość w nim zawarta do ekranu błędu.
 
 	
-				\begin{figure}[H]
+\begin{figure}[H]
   \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[width=0.8\textwidth]{GUI.png}
@@ -126,15 +126,15 @@ private void handleIfStatement(){
   \begin{subfigure}{\textwidth}
 		\begin{minted}[linenos=true]{java}
 public void onIfStatementEnter(String condition, String expressions){
-	log.info("IF entered : " + condition + " than : " + expressions);
+  log.info("IF entered : " + condition + " than : " + expressions);
 }
 
 public void onIfStatementExit(){
-	log.info("IF exited");
+  log.info("IF exited");
 }
 
 public void onElseStatementEnter(String expressions){
-	log.info("ELSE entered : " + expressions);
+  log.info("ELSE entered : " + expressions);
 }
 		\end{minted}
   \end{subfigure}\hfill

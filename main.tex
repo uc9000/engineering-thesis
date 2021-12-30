@@ -1,5 +1,21 @@
 \documentclass[12pt,a4paper]{report}
-\usepackage[utf8]{inputenc}
+\usepackage{minted}
+
+\makeatletter
+\AtBeginEnvironment{minted}{\dontdofcolorbox}
+\def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+\makeatother
+
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}
+\setsansfont{DejaVu Sans}
+\setmonofont{Consolas}
+
+\usepackage{caption}
+\DeclareCaptionFormat{myformat}{\fontsize{9}{11}\selectfont#1#2#3}
+\captionsetup{font=sf, format=myformat}
+
+
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -7,7 +23,6 @@
 \usepackage[english]{babel}
 \usepackage{indentfirst}
 \usepackage{hyperref}
-\usepackage{minted}
 \usepackage{subcaption}
 
 \usepackage{geometry}
@@ -47,7 +62,6 @@
 \begin{document}
 
 \maketitle
-
 \tableofcontents
 
 \chapter{Introduction}

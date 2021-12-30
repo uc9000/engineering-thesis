@@ -4,6 +4,7 @@ The process block, as the name suggests, is responsible for each action. For pro
 	\begin{figure}[H]
   \begin{subfigure}[t]{0.49\textwidth}
     \vspace{0pt}
+    \centering
     \includegraphics[height=6cm]{proces.png}
   \end{subfigure}\hfill
   \begin{subfigure}[t]{0.49\textwidth}
@@ -18,37 +19,39 @@ end();
 \end{figure}
 
 \section{Conditional block }
-	\subsection{$if-else$ statement }	 
+  \subsection{$if-else$ statement }	 
 	
-	  The application recognizes the syntax of the statement and creates a decision block from the given condition. Then it creates two branches responsible for actions (any number of process blocks) performed in the event of the condition being met (directly under the scope of the $if$ statement) or not being met (under the scope of the $else$ statement), and then the instructions outside the $if-else$ statement after both branches are being merged.   
+	  The application recognizes the syntax of the statement and creates a decision block for the given condition. Then it creates two branches responsible for actions (any number of process blocks) performed in the event of the condition being met (directly under the scope of the $if$ statement) or not being met (under the scope of the $else$ statement), and then the instructions outside the $if-else$ statement after both branches are being merged.   
 		
 \begin{figure}[H]
   \begin{subfigure}[t]{0.49\textwidth}
     \vspace{0pt}
-    \includegraphics[height=6cm]{decyzja-if.png}
+    \centering
+    \includegraphics[height=6cm]{decyzja-if-eng.png}
   \end{subfigure}\hfill
   \begin{subfigure}[t]{0.44\textwidth}
     \begin{minted}[xleftmargin=\parindent, linenos=true]{cpp}
 start();
-if(x >= 2){
-  x_większe_lub_równe_2;
+if(x _≥ _2){
+  x _greater _or _equal _2;
 }
 else{
-  x_mniejsze_od_2;
+  x _less _than _2;
 }
 end();
     \end{minted}
   \end{subfigure}%
-  \caption{Conditional block created with the $if$ statement}
+  \caption{Conditional block created with the $if$ statement. Example also shows support for Unicode characters ("≥" used in this case)}
 \end{figure}
 
 		\subsection { $while$ statement } 
 	
-		Interpretacja warunku działa analogicznie jak przy instrukcji $if$, podobnie również działa dołączanie kolejnych instrukcji wykonujących się po spełnieniu warunku z tą różnicą, że ostatni proces tej gałęzi łączony jest automatycznie z bloczkiem decyzyjnym instrukcji $while$. Nie spełnienie warunku odpowiada gałęzi na której znajdują się procesy umieszczone poza scope'm  tego typu instrukcji warunkowej.
+		The condition interpretation works in the same way as for the $if$ statement, the same applies to adding subsequent statements that are executed after the condition is met, with the difference that the last process of this branch is automatically connected with the decision block of the $while$ statement. Failure to meet the condition corresponds to the branch on which the processes located outside the scope of this type of conditional statement are located.
 	
-				\begin{figure}[H]
+\begin{figure}[H]
   \begin{subfigure}[t]{0.49\textwidth}
     \vspace{0pt}
+    \centering
     \includegraphics[height=6cm]{decyzja-while.png}
   \end{subfigure}\hfill
   \begin{subfigure}[t]{0.44\textwidth}
@@ -61,36 +64,37 @@ while(i < 10){
 end();
     \end{minted}
   \end{subfigure}%
-  \caption{Bloczek warunkowy utworzony przy użyciu instrukcji $while$}
+  \caption{Conditional block created with the $while$ statement}
 \end{figure}	
 
-\section{Bardziej złożony przykład}
-Schemat blokowy przedstawiający (uproszczony) algorytm działania aplikacji w której został narysowany: {\smallskip}
+\section{More complex example}
+Flowchart diagram showing the simplified algorithm of the application in which it was drawn: {\smallskip}
 
-			\begin{figure}[H]
+\begin{figure}[H]
   \begin{subfigure}{\textwidth}
-    \includegraphics[width=\textwidth]{aplikacja-flowchart.png}
+    \centering
+    \includegraphics[width=0.97\textwidth]{aplikacja-flowchart-eng.png}
   \end{subfigure}\hfill
   \begin{subfigure}[t]{0.44\textwidth}
     \begin{minted}[linenos=true]{cpp}
 Start;
-while(Aplikacja _ uruchomiona _ na _ serwerze?){
-    Wprowadzenie_ kodu_ do_ formularza;
-    Przesianie_ danych_ z_ formularza_ do_ serwera_ metodą_ HTTP_ Get.;
-    while(Rozpoznano_ nastepną_ instrukcję){
-        Przetwórz_ następną_ instrukcję_ na_ obiekty_ pomocnicze;
-        Połącz_ obiekty_ zależnie_ od_ ich_ relacji;
+while(Application _running _on _server){
+    Input_ code_ into_ form;
+    Send _data _from _the _form _to _server _using _HTTP _Get;
+    while(Next _instruction _recognized?){
+        Process _next _instruction _to _helper _objects;
+        Link _objects _depending _on _their _relation;
     }
-    if(Czy_ to_ ostatnia_ instrukcja?){
-    Zamiana_ obiektów_ i_ ich_ połączeń_ na_ schemat_ blokowy;
-    Wyswietlenie _ schematu _ na _ stronie _ HTML;
+    if(Is _this _last _instruction?){
+    Convert _helper _objects _to _flowchart;
+    Display _the _result _on _HTML _page;
     } else {
-        Błąd _ składni;
-        Wyświetlenie _ informacji _ o _ błędzie _ na _ stronie _ HTML;
+        Syntax _error;
+        Display _the _error _message _on _HTML _page;
     }
 }
-Koniec;
+End;
     \end{minted}
   \end{subfigure}%
-  \caption{Przykład pokazujący obsługę zagnieżdżonych instrukcji warunkowych, zawijanie tekstu oraz wprowadzanie polskich znaków}
+  \caption{An example showing handling of nested conditional statements and text wrapping}
 \end{figure}
