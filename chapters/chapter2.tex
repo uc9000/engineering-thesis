@@ -1,5 +1,5 @@
 \section{Process and start/end blocks}
-The process block, as the name suggests, is responsible for each action. For programming code analysis, this block corresponds to a function call or an assignment operation. The start / end block in this application differs from the process block only in that it signals the starting point and all possible endings of the algorithm in a given scheme. The application automatically replaces the process blocks at the beginning and end with a start / end block. Additionally, the application ignores all $whitespace$ characters. If we want to enter a space character in the diagram block, use the character "\_" (underscore), which will be replaced. The application does not force the use of syntax elements implying that it is a function call (ending with "... ();") or an assignment (operator "="), to draw this block it is only required that only word characters  are used in any language (if having a Unicode equivalent). 
+The process block, as the name suggests, is responsible for each action. For programming code analysis, this block corresponds to a function call or an assignment operation. The start/end block in this application differs from the process block only in that it signals the starting point and all possible endings of the algorithm in a given scheme. The application automatically replaces the process blocks at the beginning and end with a start/end block. Additionally, the application ignores all $whitespace$ characters. If we want to enter a space character in the diagram block, use the character ``\_'' (underscore), which will be replaced. The application does not force the use of syntax elements implying that it is a function call (ending with ``... ();'') or an assignment (operator ``=''), to draw this block it is only required that only word characters  are used in any language (if having a Unicode equivalent). 
 	
 	\begin{figure}[H]
   \begin{subfigure}[t]{0.49\textwidth}
@@ -15,7 +15,7 @@ proces();
 end();
     \end{minted}
   \end{subfigure}%
-  \caption{Process, start/end blocks with the code that created those blocks }
+  \caption{Process, start/end blocks with the code that created those blocks}
 \end{figure}
 
 \section{Conditional block }
@@ -41,7 +41,7 @@ else{
 end();
     \end{minted}
   \end{subfigure}%
-  \caption{Conditional block created with the $if$ statement. Example also shows support for Unicode characters ("≥" used in this case)}
+  \caption{Conditional block created with the $if$ statement. Example also shows support for Unicode characters (``≥'' used in this case)}
 \end{figure}
 
 		\subsection { $while$ statement } 

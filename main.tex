@@ -43,26 +43,13 @@
 \usepackage{graphicx}
 \graphicspath{ {./img/} }
 
-\author{
-	{Autor: Jordan Wiszniewski}\\
-	{nr indeksu: 247859}\\
-	{Promotor: Dr inż. Wojciech Myszka}\\
-	{charakter pracy: projektowy}
-}
-\date{Rok akademicki 2021/2022}
-
-\title{
-	{\includegraphics[width = \textwidth]{logo-pwr-wm.png}}
-	{\bigbreak}
-	{Praca dyplomowa inżynierska}\\
-	{\bigbreak}
-	\textbf{Narzędzie do rysowania schematów blokowych}
-}
+\usepackage{pdfpages}
 
 \begin{document}
 
-\maketitle
+\includepdf[pages=-]{chapters/air_1_strona.pdf}
 \tableofcontents
+\listoffigures
 
 \chapter{Introduction}
 \input{chapters/chapter1}
@@ -70,7 +57,7 @@
 \chapter{Types of blocks and example use cases}
 \input{chapters/chapter2}
 
-\chapter{Description of the application source and usage}
+\chapter{Description of the application source code and usage}
 \input{chapters/chapter3}
 
 \end{document}
