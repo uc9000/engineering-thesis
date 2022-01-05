@@ -1,0 +1,34 @@
+\section{Deployment}
+  To make the application available to the regular user with the internet connection, the deployment is needed. This chapter covers the two most common ways to deploy Spring Boot applications such as the one in this project. Additionally, setting up a custom domain for DNS is also recommended for making this tool more accessible.
+
+  \subsection{Cloud service}
+    The process of deployment on cloud services such as: Azure, Amazon Web Services, Heroku is usually the simplest and most recommended way. Every cloud service has its own user manual for deployment, usually with the support of deploying Spring Boot applications from the git repository without the need to manually build the project with a packaging tool.
+
+  \subsection{Self-hosted}
+    There is more than one way to host the application locally. This example briefly explains how to achieve it with jar packaging
+    In the pom.xml file used by Maven (building tool used in this project), the packaging tag must be set to jar:
+
+    \begin{minted}{shell-session}
+      <packaging>jar</packaging>
+    \end{minted}
+
+    Later, the application should be built with the use of Maven by executing in the terminal:
+    \begin{minted}{shell-session}
+      mvn package
+    \end{minted}
+
+    Lastly, to run the application by executing:
+    \begin{minted}{shell-session}
+      java -jar <your_app_name>-<your_app_version>.jar
+    \end{minted}
+
+    The application should be available on the localhost with a specified port (http://localhost:8080 if not specified in application.properties file). To access the application by HTTP protocol from another device, it is possible from the URL template:
+
+    \begin{minted}{shell-session}
+      http://<IP of the server computer>:<localhost port>
+    \end{minted}
+     
+\bigskip \bigskip
+
+\section{Conclusions}
+  The project reached its main didactic purpose that was to directly show the relation between algorithm included in C-based programming code and the equivalent of that algorithm in the graphical form of flowchart diagram. It covers the most basic and most important C language features like invoking functions or assignment as process blocks and conditional statements like while and if-else as decision blocks properly linked with the surrounding and nested inner blocks. Additional goals were also met with making the application accessible and useful tool that highly increases the performance of drawing flowcharts.
